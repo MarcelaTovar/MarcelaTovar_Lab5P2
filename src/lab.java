@@ -1,3 +1,6 @@
+
+import javax.swing.JDialog;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -25,21 +28,168 @@ public class lab extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JDialog_Agregar = new javax.swing.JDialog();
+        JDialog_Listar = new javax.swing.JDialog();
+        JDialog_Simular = new javax.swing.JDialog();
+        JButton_Agregar = new javax.swing.JButton();
+        JButton_Listar = new javax.swing.JButton();
+        JButton_Simular = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        JMenu_Agregar = new javax.swing.JMenu();
+        JMenu_Listar = new javax.swing.JMenu();
+        JMenu_Simulacion = new javax.swing.JMenu();
+
+        javax.swing.GroupLayout JDialog_AgregarLayout = new javax.swing.GroupLayout(JDialog_Agregar.getContentPane());
+        JDialog_Agregar.getContentPane().setLayout(JDialog_AgregarLayout);
+        JDialog_AgregarLayout.setHorizontalGroup(
+            JDialog_AgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        JDialog_AgregarLayout.setVerticalGroup(
+            JDialog_AgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout JDialog_ListarLayout = new javax.swing.GroupLayout(JDialog_Listar.getContentPane());
+        JDialog_Listar.getContentPane().setLayout(JDialog_ListarLayout);
+        JDialog_ListarLayout.setHorizontalGroup(
+            JDialog_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        JDialog_ListarLayout.setVerticalGroup(
+            JDialog_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout JDialog_SimularLayout = new javax.swing.GroupLayout(JDialog_Simular.getContentPane());
+        JDialog_Simular.getContentPane().setLayout(JDialog_SimularLayout);
+        JDialog_SimularLayout.setHorizontalGroup(
+            JDialog_SimularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        JDialog_SimularLayout.setVerticalGroup(
+            JDialog_SimularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        JButton_Agregar.setText("Agregar");
+        JButton_Agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButton_AgregarMouseClicked(evt);
+            }
+        });
+        JButton_Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButton_AgregarActionPerformed(evt);
+            }
+        });
+
+        JButton_Listar.setText("Listar");
+        JButton_Listar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButton_ListarMouseClicked(evt);
+            }
+        });
+
+        JButton_Simular.setText("Simular");
+        JButton_Simular.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButton_SimularMouseClicked(evt);
+            }
+        });
+
+        JMenu_Agregar.setText("Agregar");
+        JMenu_Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenu_AgregarActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(JMenu_Agregar);
+
+        JMenu_Listar.setText("Listar");
+        JMenu_Listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenu_ListarActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(JMenu_Listar);
+
+        JMenu_Simulacion.setText("Simulacion");
+        JMenu_Simulacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenu_SimulacionActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(JMenu_Simulacion);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(JButton_Simular, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(JButton_Listar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JButton_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(JButton_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(JButton_Listar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(JButton_Simular, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JButton_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_AgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JButton_AgregarActionPerformed
+
+    private void JButton_AgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_AgregarMouseClicked
+        // TODO add your handling code here:
+        abrir_Dialog(JDialog_Agregar);
+    }//GEN-LAST:event_JButton_AgregarMouseClicked
+
+    private void JButton_ListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_ListarMouseClicked
+        // TODO add your handling code here:
+        abrir_Dialog(JDialog_Listar);
+    }//GEN-LAST:event_JButton_ListarMouseClicked
+
+    private void JButton_SimularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_SimularMouseClicked
+        // TODO add your handling code here:
+        abrir_Dialog(JDialog_Simular);
+    }//GEN-LAST:event_JButton_SimularMouseClicked
+
+    private void JMenu_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_AgregarActionPerformed
+        // TODO add your handling code here:
+        abrir_Dialog(JDialog_Agregar);
+    }//GEN-LAST:event_JMenu_AgregarActionPerformed
+
+    private void JMenu_ListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_ListarActionPerformed
+        // TODO add your handling code here:
+         abrir_Dialog(JDialog_Listar);
+    }//GEN-LAST:event_JMenu_ListarActionPerformed
+
+    private void JMenu_SimulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_SimulacionActionPerformed
+        // TODO add your handling code here:
+        abrir_Dialog(JDialog_Simular);
+    }//GEN-LAST:event_JMenu_SimulacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +227,22 @@ public class lab extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButton_Agregar;
+    private javax.swing.JButton JButton_Listar;
+    private javax.swing.JButton JButton_Simular;
+    private javax.swing.JDialog JDialog_Agregar;
+    private javax.swing.JDialog JDialog_Listar;
+    private javax.swing.JDialog JDialog_Simular;
+    private javax.swing.JMenu JMenu_Agregar;
+    private javax.swing.JMenu JMenu_Listar;
+    private javax.swing.JMenu JMenu_Simulacion;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
+    private void abrir_Dialog(JDialog jd){
+        jd.setModal(true);
+        jd.pack();
+        jd.setLocationRelativeTo(this);
+        jd.setVisible(true); 
+    }
+
 }
