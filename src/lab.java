@@ -1,6 +1,7 @@
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -54,6 +55,7 @@ public class lab extends javax.swing.JFrame {
         JDialog_Listar = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTree_Arbol = new javax.swing.JTree();
+        jLabel10 = new javax.swing.JLabel();
         JDialog_Simular = new javax.swing.JDialog();
         JButton_Agregar = new javax.swing.JButton();
         JButton_Listar = new javax.swing.JButton();
@@ -160,23 +162,42 @@ public class lab extends javax.swing.JFrame {
         JComboBox_Universo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel" }));
         JDialog_Agregar.getContentPane().add(JComboBox_Universo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 100, 30));
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personajes");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("DC");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Marvel");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Capcom");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("MK");
+        treeNode1.add(treeNode2);
+        JTree_Arbol.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane1.setViewportView(JTree_Arbol);
+
+        jLabel10.setFont(new java.awt.Font("American Typewriter", 0, 48)); // NOI18N
+        jLabel10.setText("Listar");
 
         javax.swing.GroupLayout JDialog_ListarLayout = new javax.swing.GroupLayout(JDialog_Listar.getContentPane());
         JDialog_Listar.getContentPane().setLayout(JDialog_ListarLayout);
         JDialog_ListarLayout.setHorizontalGroup(
             JDialog_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDialog_ListarLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(557, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128)
+                .addComponent(jLabel10)
+                .addContainerGap(387, Short.MAX_VALUE))
         );
         JDialog_ListarLayout.setVerticalGroup(
             JDialog_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDialog_ListarLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDialog_ListarLayout.createSequentialGroup()
+                .addContainerGap(70, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout JDialog_SimularLayout = new javax.swing.GroupLayout(JDialog_Simular.getContentPane());
@@ -327,17 +348,46 @@ public class lab extends javax.swing.JFrame {
          modelo.addElement("Marvel");
          JComboBox_Universo.setModel(modelo);
          
+         int existe = -1;
+         
+         
         DefaultTreeModel m = (DefaultTreeModel) JTree_Arbol.getModel();
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
         DefaultMutableTreeNode nodo_personaje;
         nodo_personaje = new DefaultMutableTreeNode(new Personaje(JTextField_CrearNombre.getText(),JTextField_CrearPoder.getText(),JTextField_CrearDebilidad.getText(),JComboBox_Universo.getSelectedItem().toString(),Integer.parseInt(JTextField_CrearFuerza.getText()),Integer.parseInt(JTextField_AFisica.getText()),Integer.parseInt(JTextField_CrearAMental.getText()),Integer.parseInt(JTextField_CrearPuntosVida.getText())));
-        DefaultMutableTreeNode nodo_universo;
-        nodo_universo = new DefaultMutableTreeNode(JComboBox_Universo.getSelectedItem().toString());
         
-        nodo_universo.add(nodo_personaje);
-        raiz.add(nodo_universo);
-        m.reload();
+        
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().
+                        equals(JComboBox_Universo.getSelectedItem().toString())) {
+                    DefaultMutableTreeNode p
+                            = new DefaultMutableTreeNode(JTextField_CrearNombre.getText()
+                            );
+        
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                    existe = 1;
+                } //fin if
+            } //fin for 
+        if (existe == -1) {
+            JOptionPane.showMessageDialog(JDialog_Agregar, "Ingrese un superheroe dentro de los universos estipulados");
+        }
+        
+//        DefaultMutableTreeNode nodo_universo;
+//        nodo_universo = new DefaultMutableTreeNode(JComboBox_Universo.getSelectedItem().toString());
+//        if (existe == -1) {
+//                DefaultMutableTreeNode n
+//                        = new DefaultMutableTreeNode(JComboBox_Universo.getSelectedItem().toString());
+//                DefaultMutableTreeNode p
+//                        = new DefaultMutableTreeNode(
+//                                JComboBox_Universo.getSelectedItem().toString());
+//                n.add(p);
+//                raiz.add(n);
+//            }  // fin if          
+//            m.reload();
+//        nodo_universo.add(nodo_personaje);
+//        raiz.add(nodo_universo);
+//        m.reload();
         
         JDialog_Agregar.setVisible(false);
     }//GEN-LAST:event_JButton_CrearMouseClicked
@@ -398,6 +448,7 @@ public class lab extends javax.swing.JFrame {
     private javax.swing.JTextField JTextField_CrearPuntosVida;
     private javax.swing.JTree JTree_Arbol;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -415,5 +466,8 @@ public class lab extends javax.swing.JFrame {
         jd.setLocationRelativeTo(this);
         jd.setVisible(true); 
     }
+    
+    DefaultMutableTreeNode nodo_seleccionado;
+    Personaje personaje_seleccionada;
 
 }
