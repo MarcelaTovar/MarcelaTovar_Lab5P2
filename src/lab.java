@@ -57,6 +57,29 @@ public class lab extends javax.swing.JFrame {
         JTree_Arbol = new javax.swing.JTree();
         jLabel10 = new javax.swing.JLabel();
         JDialog_Simular = new javax.swing.JDialog();
+        JPopUpMenu_Crud = new javax.swing.JPopupMenu();
+        JMenuItem_Modificar = new javax.swing.JMenuItem();
+        JMenuItem_Eliminar = new javax.swing.JMenuItem();
+        JDialog_Modificar = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        JTextField_ModificarNombre = new javax.swing.JTextField();
+        JTextField_ModificarPoder = new javax.swing.JTextField();
+        JTextField_ModificarDebilidad = new javax.swing.JTextField();
+        JTextField_ModificarFuerza = new javax.swing.JTextField();
+        JTextField_ModificarAFisica = new javax.swing.JTextField();
+        JTextField_ModificarAMental = new javax.swing.JTextField();
+        JTextField_ModificarPuntosVida = new javax.swing.JTextField();
+        JComboBox_ModificarUniverso = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        JDialog_Eliminar = new javax.swing.JDialog();
         JButton_Agregar = new javax.swing.JButton();
         JButton_Listar = new javax.swing.JButton();
         JButton_Simular = new javax.swing.JButton();
@@ -172,6 +195,11 @@ public class lab extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("MK");
         treeNode1.add(treeNode2);
         JTree_Arbol.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        JTree_Arbol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTree_ArbolMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(JTree_Arbol);
 
         jLabel10.setFont(new java.awt.Font("American Typewriter", 0, 48)); // NOI18N
@@ -182,22 +210,20 @@ public class lab extends javax.swing.JFrame {
         JDialog_ListarLayout.setHorizontalGroup(
             JDialog_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDialog_ListarLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128)
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(136, 136, 136)
                 .addComponent(jLabel10)
-                .addContainerGap(387, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         JDialog_ListarLayout.setVerticalGroup(
             JDialog_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDialog_ListarLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDialog_ListarLayout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(23, 23, 23)
+                .addGroup(JDialog_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout JDialog_SimularLayout = new javax.swing.GroupLayout(JDialog_Simular.getContentPane());
@@ -208,6 +234,149 @@ public class lab extends javax.swing.JFrame {
         );
         JDialog_SimularLayout.setVerticalGroup(
             JDialog_SimularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        JMenuItem_Modificar.setText("Modificar");
+        JMenuItem_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItem_ModificarActionPerformed(evt);
+            }
+        });
+        JPopUpMenu_Crud.add(JMenuItem_Modificar);
+
+        JMenuItem_Eliminar.setText("Eliminar");
+        JPopUpMenu_Crud.add(JMenuItem_Eliminar);
+
+        jLabel11.setFont(new java.awt.Font("American Typewriter", 0, 36)); // NOI18N
+        jLabel11.setText("Modificar");
+
+        jLabel12.setText("Ingrese el nuevo nombre: ");
+
+        jLabel13.setText("Ingrese el nuevo poder: ");
+
+        jLabel14.setText("Ingrese la nueva debilidad:");
+
+        jLabel15.setText("Ingrese el nuevo universo: ");
+
+        jLabel16.setText("Ingrese la nueva fuerza: ");
+
+        jLabel17.setText("Ingrese la nueva agilidad Fisica: ");
+
+        jLabel18.setText("Ingrese la nueva agilidad mental: ");
+
+        jLabel19.setText("Ingrese los puntos de vida: ");
+
+        JComboBox_ModificarUniverso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel", "CopCorm", "MK" }));
+
+        jButton1.setText("Modificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JDialog_ModificarLayout = new javax.swing.GroupLayout(JDialog_Modificar.getContentPane());
+        JDialog_Modificar.getContentPane().setLayout(JDialog_ModificarLayout);
+        JDialog_ModificarLayout.setHorizontalGroup(
+            JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                        .addGap(273, 273, 273)
+                        .addComponent(jLabel11))
+                    .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                                    .addComponent(jLabel14)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(JTextField_ModificarDebilidad))
+                                .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(JComboBox_ModificarUniverso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                                    .addComponent(jLabel16)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(JTextField_ModificarFuerza))
+                                .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                                    .addComponent(jLabel17)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(JTextField_ModificarAFisica, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                                .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                                    .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(JTextField_ModificarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                        .addComponent(JTextField_ModificarPoder))))
+                            .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(33, 33, 33)
+                                .addComponent(JTextField_ModificarAMental, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JTextField_ModificarPuntosVida, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(299, Short.MAX_VALUE))
+        );
+        JDialog_ModificarLayout.setVerticalGroup(
+            JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(JDialog_ModificarLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTextField_ModificarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(JTextField_ModificarPoder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(JTextField_ModificarDebilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(JComboBox_ModificarUniverso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(JTextField_ModificarFuerza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(JTextField_ModificarAFisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(JTextField_ModificarAMental, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JDialog_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(JTextField_ModificarPuntosVida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+        );
+
+        javax.swing.GroupLayout JDialog_EliminarLayout = new javax.swing.GroupLayout(JDialog_Eliminar.getContentPane());
+        JDialog_Eliminar.getContentPane().setLayout(JDialog_EliminarLayout);
+        JDialog_EliminarLayout.setHorizontalGroup(
+            JDialog_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        JDialog_EliminarLayout.setVerticalGroup(
+            JDialog_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -362,8 +531,8 @@ public class lab extends javax.swing.JFrame {
                 if (raiz.getChildAt(i).toString().
                         equals(JComboBox_Universo.getSelectedItem().toString())) {
                     DefaultMutableTreeNode p
-                            = new DefaultMutableTreeNode(JTextField_CrearNombre.getText()
-                            );
+                            = new DefaultMutableTreeNode(new Personaje(JTextField_CrearNombre.getText(),JTextField_CrearPoder.getText(),JTextField_CrearDebilidad.getText(),JComboBox_Universo.getSelectedItem().toString(),Integer.parseInt(JTextField_CrearFuerza.getText()),Integer.parseInt(JTextField_AFisica.getText()),Integer.parseInt(JTextField_CrearAMental.getText()),Integer.parseInt(JTextField_CrearPuntosVida.getText())));
+        
         
                     ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
                     existe = 1;
@@ -391,6 +560,61 @@ public class lab extends javax.swing.JFrame {
         
         JDialog_Agregar.setVisible(false);
     }//GEN-LAST:event_JButton_CrearMouseClicked
+
+    private void JTree_ArbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTree_ArbolMouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton()==3) {
+            //seleccionar un nodo con click derecho
+            int row = JTree_Arbol.getClosestRowForLocation(
+                    evt.getX(), evt.getY());
+            JTree_Arbol.setSelectionRow(row);
+            Object v1
+                    = JTree_Arbol.getSelectionPath().
+                            getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            if (nodo_seleccionado.getUserObject() instanceof Personaje) {
+                personaje_seleccionada
+                        = (Personaje) nodo_seleccionado.
+                                getUserObject();
+                JPopUpMenu_Crud.show(evt.getComponent(),
+                        evt.getX(), evt.getY());
+            } else {
+               JOptionPane.showMessageDialog(JDialog_Listar, "Seleccione alguien");
+            }
+
+        }
+    }//GEN-LAST:event_JTree_ArbolMouseClicked
+
+    private void JMenuItem_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItem_ModificarActionPerformed
+        // TODO add your handling code here:
+        abrir_Dialog(JDialog_Modificar);
+        
+    }//GEN-LAST:event_JMenuItem_ModificarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        DefaultTreeModel m
+                = (DefaultTreeModel) JTree_Arbol.getModel();
+        personaje_seleccionada.setNombre(
+                JTextField_ModificarNombre.getText());
+        personaje_seleccionada.setPoder(
+                JTextField_ModificarPoder.getText());
+        personaje_seleccionada.setDebilidad(
+                JTextField_ModificarDebilidad.getText());
+        personaje_seleccionada.setUniverso(
+                JComboBox_ModificarUniverso.getSelectedItem().toString());
+        personaje_seleccionada.setFuerza(
+                Integer.parseInt(JTextField_ModificarFuerza.getText()));
+        personaje_seleccionada.setAgilidadFisica(
+                Integer.parseInt(JTextField_ModificarAFisica.getText()));
+        personaje_seleccionada.setAgilidadMental(
+                Integer.parseInt(JTextField_ModificarAMental.getText()));
+        personaje_seleccionada.setPuntosdeVida(
+                Integer.parseInt(JTextField_ModificarPuntosVida.getText()));
+        m.reload();
+        
+        JDialog_Modificar.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,13 +656,19 @@ public class lab extends javax.swing.JFrame {
     private javax.swing.JButton JButton_Crear;
     private javax.swing.JButton JButton_Listar;
     private javax.swing.JButton JButton_Simular;
+    private javax.swing.JComboBox<String> JComboBox_ModificarUniverso;
     private javax.swing.JComboBox<String> JComboBox_Universo;
     private javax.swing.JDialog JDialog_Agregar;
+    private javax.swing.JDialog JDialog_Eliminar;
     private javax.swing.JDialog JDialog_Listar;
+    private javax.swing.JDialog JDialog_Modificar;
     private javax.swing.JDialog JDialog_Simular;
+    private javax.swing.JMenuItem JMenuItem_Eliminar;
+    private javax.swing.JMenuItem JMenuItem_Modificar;
     private javax.swing.JMenu JMenu_Agregar;
     private javax.swing.JMenu JMenu_Listar;
     private javax.swing.JMenu JMenu_Simulacion;
+    private javax.swing.JPopupMenu JPopUpMenu_Crud;
     private javax.swing.JTextField JTextField_AFisica;
     private javax.swing.JTextField JTextField_CrearAMental;
     private javax.swing.JTextField JTextField_CrearDebilidad;
@@ -446,9 +676,26 @@ public class lab extends javax.swing.JFrame {
     private javax.swing.JTextField JTextField_CrearNombre;
     private javax.swing.JTextField JTextField_CrearPoder;
     private javax.swing.JTextField JTextField_CrearPuntosVida;
+    private javax.swing.JTextField JTextField_ModificarAFisica;
+    private javax.swing.JTextField JTextField_ModificarAMental;
+    private javax.swing.JTextField JTextField_ModificarDebilidad;
+    private javax.swing.JTextField JTextField_ModificarFuerza;
+    private javax.swing.JTextField JTextField_ModificarNombre;
+    private javax.swing.JTextField JTextField_ModificarPoder;
+    private javax.swing.JTextField JTextField_ModificarPuntosVida;
     private javax.swing.JTree JTree_Arbol;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
