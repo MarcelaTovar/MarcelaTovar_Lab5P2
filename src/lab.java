@@ -79,7 +79,6 @@ public class lab extends javax.swing.JFrame {
         JTextField_ModificarPuntosVida = new javax.swing.JTextField();
         JComboBox_ModificarUniverso = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        JDialog_Eliminar = new javax.swing.JDialog();
         JButton_Agregar = new javax.swing.JButton();
         JButton_Listar = new javax.swing.JButton();
         JButton_Simular = new javax.swing.JButton();
@@ -246,6 +245,11 @@ public class lab extends javax.swing.JFrame {
         JPopUpMenu_Crud.add(JMenuItem_Modificar);
 
         JMenuItem_Eliminar.setText("Eliminar");
+        JMenuItem_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItem_EliminarActionPerformed(evt);
+            }
+        });
         JPopUpMenu_Crud.add(JMenuItem_Eliminar);
 
         jLabel11.setFont(new java.awt.Font("American Typewriter", 0, 36)); // NOI18N
@@ -367,17 +371,6 @@ public class lab extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
-        );
-
-        javax.swing.GroupLayout JDialog_EliminarLayout = new javax.swing.GroupLayout(JDialog_Eliminar.getContentPane());
-        JDialog_Eliminar.getContentPane().setLayout(JDialog_EliminarLayout);
-        JDialog_EliminarLayout.setHorizontalGroup(
-            JDialog_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        JDialog_EliminarLayout.setVerticalGroup(
-            JDialog_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -524,14 +517,14 @@ public class lab extends javax.swing.JFrame {
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
         DefaultMutableTreeNode nodo_personaje;
-        nodo_personaje = new DefaultMutableTreeNode(new Personaje(JTextField_CrearNombre.getText(),JTextField_CrearPoder.getText(),JTextField_CrearDebilidad.getText(),JComboBox_Universo.getSelectedItem().toString(),Integer.parseInt(JTextField_CrearFuerza.getText()),Integer.parseInt(JTextField_AFisica.getText()),Integer.parseInt(JTextField_CrearAMental.getText()),Integer.parseInt(JTextField_CrearPuntosVida.getText())));
+        nodo_personaje = new DefaultMutableTreeNode(new Personaje(JTextField_CrearNombre.getText(),JTextField_CrearPoder.getText(),JTextField_CrearDebilidad.getText(),JComboBox_Universo.getSelectedItem().toString(),Integer.parseInt(JTextField_CrearFuerza.getText()),Integer.parseInt(JTextField_AFisica.getText()),Integer.parseInt(JTextField_CrearAMental.getText()),Integer.parseInt(JTextField_CrearPuntosVida.getText()),true));
         
         
         for (int i = 0; i < raiz.getChildCount(); i++) {
                 if (raiz.getChildAt(i).toString().
                         equals(JComboBox_Universo.getSelectedItem().toString())) {
                     DefaultMutableTreeNode p
-                            = new DefaultMutableTreeNode(new Personaje(JTextField_CrearNombre.getText(),JTextField_CrearPoder.getText(),JTextField_CrearDebilidad.getText(),JComboBox_Universo.getSelectedItem().toString(),Integer.parseInt(JTextField_CrearFuerza.getText()),Integer.parseInt(JTextField_AFisica.getText()),Integer.parseInt(JTextField_CrearAMental.getText()),Integer.parseInt(JTextField_CrearPuntosVida.getText())));
+                            = new DefaultMutableTreeNode(new Personaje(JTextField_CrearNombre.getText(),JTextField_CrearPoder.getText(),JTextField_CrearDebilidad.getText(),JComboBox_Universo.getSelectedItem().toString(),Integer.parseInt(JTextField_CrearFuerza.getText()),Integer.parseInt(JTextField_AFisica.getText()),Integer.parseInt(JTextField_CrearAMental.getText()),Integer.parseInt(JTextField_CrearPuntosVida.getText()),true));
         
         
                     ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
@@ -616,6 +609,19 @@ public class lab extends javax.swing.JFrame {
         JDialog_Modificar.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void JMenuItem_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItem_EliminarActionPerformed
+        // TODO add your handling code here:
+  
+            DefaultTreeModel m
+                    = (DefaultTreeModel) JTree_Arbol.getModel();
+            m.removeNodeFromParent(
+                    nodo_seleccionado);
+            m.reload();
+            
+            JOptionPane.showMessageDialog(JDialog_Listar, "Eliminado con exito");
+        
+    }//GEN-LAST:event_JMenuItem_EliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -659,7 +665,6 @@ public class lab extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> JComboBox_ModificarUniverso;
     private javax.swing.JComboBox<String> JComboBox_Universo;
     private javax.swing.JDialog JDialog_Agregar;
-    private javax.swing.JDialog JDialog_Eliminar;
     private javax.swing.JDialog JDialog_Listar;
     private javax.swing.JDialog JDialog_Modificar;
     private javax.swing.JDialog JDialog_Simular;
