@@ -105,6 +105,14 @@ public class Personaje {
     public void setPuntosdeVida(int puntosdeVida) {
         this.puntosdeVida = puntosdeVida;
     }
+
+    public boolean isS() {
+        return S;
+    }
+
+    public void setS(boolean S) {
+        this.S = S;
+    }
     
     
 
@@ -113,7 +121,7 @@ public class Personaje {
         if (S) {
             return nombre;
         }
-        return this.nombre+"\nPoder: "+this.poder+"\nFuerza: "+this.fuerza+"\nDebilidad: "+this.debilidad+"\nAgilidad Fisica: "+this.agilidadFisica+"\nAgilidad Mental: "+this.agilidadMental+"\nPuntos de vida: "+this.puntosdeVida;
+        return this.nombre+"\nPoder-> "+this.poder+"\nFuerza-> "+this.fuerza+"\nDebilidad-> "+this.debilidad+"\nAgilidad Fisica-> "+this.agilidadFisica+"\nAgilidad Mental-> "+this.agilidadMental+"\nPuntos de vida-> "+this.puntosdeVida;
     }
     
     
