@@ -94,6 +94,13 @@ public class lab extends javax.swing.JFrame {
         JTextField_ModificarPuntosVida = new javax.swing.JTextField();
         JComboBox_ModificarUniverso = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        JDialog_Pelea = new javax.swing.JDialog();
+        JButton_resistencia = new javax.swing.JButton();
+        JButton_Mental = new javax.swing.JButton();
+        JButton_fisico = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        JTextArea_Bitacora = new javax.swing.JTextArea();
+        JButton_Pelea = new javax.swing.JButton();
         JButton_Agregar = new javax.swing.JButton();
         JButton_Listar = new javax.swing.JButton();
         JButton_Simular = new javax.swing.JButton();
@@ -196,7 +203,7 @@ public class lab extends javax.swing.JFrame {
         });
         JDialog_Agregar.getContentPane().add(JButton_Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 190, 80));
 
-        JComboBox_Universo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel" }));
+        JComboBox_Universo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel", "Capcom", "MK" }));
         JDialog_Agregar.getContentPane().add(JComboBox_Universo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 100, 30));
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personajes");
@@ -455,6 +462,59 @@ public class lab extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
+        JButton_resistencia.setText("RESISTENCIA");
+
+        JButton_Mental.setText("MENTAL");
+
+        JButton_fisico.setText("FISICO");
+
+        JTextArea_Bitacora.setColumns(20);
+        JTextArea_Bitacora.setRows(5);
+        jScrollPane5.setViewportView(JTextArea_Bitacora);
+
+        JButton_Pelea.setText("Pelea");
+        JButton_Pelea.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButton_PeleaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JDialog_PeleaLayout = new javax.swing.GroupLayout(JDialog_Pelea.getContentPane());
+        JDialog_Pelea.getContentPane().setLayout(JDialog_PeleaLayout);
+        JDialog_PeleaLayout.setHorizontalGroup(
+            JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDialog_PeleaLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addGroup(JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JDialog_PeleaLayout.createSequentialGroup()
+                        .addComponent(JButton_Pelea, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(JDialog_PeleaLayout.createSequentialGroup()
+                        .addGroup(JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane5)
+                            .addGroup(JDialog_PeleaLayout.createSequentialGroup()
+                                .addComponent(JButton_Mental, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(84, 84, 84)
+                                .addComponent(JButton_fisico, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                                .addComponent(JButton_resistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(109, 109, 109))))
+        );
+        JDialog_PeleaLayout.setVerticalGroup(
+            JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDialog_PeleaLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(JButton_Pelea, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JButton_Mental, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JButton_fisico, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JButton_resistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -586,12 +646,6 @@ public class lab extends javax.swing.JFrame {
     private void JButton_CrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_CrearMouseClicked
         // TODO add your handling code here:
 
-        DefaultComboBoxModel modelo
-                = (DefaultComboBoxModel) JComboBox_Universo.getModel();
-        modelo.addElement("DC");
-        modelo.addElement("Marvel");
-        JComboBox_Universo.setModel(modelo);
-
         int existe = -1;
 
         DefaultTreeModel m = (DefaultTreeModel) JTree_Arbol.getModel();
@@ -600,7 +654,7 @@ public class lab extends javax.swing.JFrame {
         DefaultMutableTreeNode nodo_personaje;
         nodo_personaje = new DefaultMutableTreeNode(new Personaje(JTextField_CrearNombre.getText(), JTextField_CrearPoder.getText(), JTextField_CrearDebilidad.getText(), JComboBox_Universo.getSelectedItem().toString(), Integer.parseInt(JTextField_CrearFuerza.getText()), Integer.parseInt(JTextField_AFisica.getText()), Integer.parseInt(JTextField_CrearAMental.getText()), Integer.parseInt(JTextField_CrearPuntosVida.getText()), true));
         personajes.add(new Personaje(JTextField_CrearNombre.getText(), JTextField_CrearPoder.getText(), JTextField_CrearDebilidad.getText(), JComboBox_Universo.getSelectedItem().toString(), Integer.parseInt(JTextField_CrearFuerza.getText()), Integer.parseInt(JTextField_AFisica.getText()), Integer.parseInt(JTextField_CrearAMental.getText()), Integer.parseInt(JTextField_CrearPuntosVida.getText()), true));
-       
+
         for (int i = 0; i < raiz.getChildCount(); i++) {
             if (raiz.getChildAt(i).toString().
                     equals(JComboBox_Universo.getSelectedItem().toString())) {
@@ -614,15 +668,15 @@ public class lab extends javax.swing.JFrame {
         if (existe == -1) {
             JOptionPane.showMessageDialog(JDialog_Agregar, "Ingrese un superheroe dentro de los universos estipulados");
         }
-        
-         for (int i = 0; i < personajes.size(); i++) {
+
+        for (int i = 0; i < personajes.size(); i++) {
             if (personajes.get(i).getUniverso().equals("DC")) {
                 dc.add(personajes.get(i));
-            }else if (personajes.get(i).getUniverso().equals("Marvel")) {
+            } else if (personajes.get(i).getUniverso().equals("Marvel")) {
                 Marvel.add(personajes.get(i));
-            }else if (personajes.get(i).getUniverso().equals("Capcom")) {
+            } else if (personajes.get(i).getUniverso().equals("Capcom")) {
                 capcom.add(personajes.get(i));
-            }else if (personajes.get(i).getUniverso().equals("MK")) {
+            } else if (personajes.get(i).getUniverso().equals("MK")) {
                 MK.add(personajes.get(i));
             }
         }
@@ -649,6 +703,10 @@ public class lab extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getButton() == 3) {
             //seleccionar un nodo con click derecho
+            DefaultTreeModel m = (DefaultTreeModel) JTree_Arbol.getModel();
+            DefaultMutableTreeNode raiz
+                    = (DefaultMutableTreeNode) m.getRoot();
+
             int row = JTree_Arbol.getClosestRowForLocation(
                     evt.getX(), evt.getY());
             JTree_Arbol.setSelectionRow(row);
@@ -656,7 +714,7 @@ public class lab extends javax.swing.JFrame {
                     = JTree_Arbol.getSelectionPath().
                             getLastPathComponent();
             nodo_seleccionado = (DefaultMutableTreeNode) v1;
-            
+
             if (nodo_seleccionado.getUserObject() instanceof Personaje) {
                 personaje_seleccionada
                         = (Personaje) nodo_seleccionado.
@@ -671,8 +729,43 @@ public class lab extends javax.swing.JFrame {
                     JList_MostrarPersonaje.setModel(list);
                 }
 
-            }else {
-                JOptionPane.showMessageDialog(JDialog_Listar, "Seleccione alguien");
+            } else {
+                if (nodo_seleccionado.toString().equals("DC")) {
+                    JTextField_NombreListar.setText("DC");
+                    list.removeAllElements();
+                    for (Personaje personaje : personajes) {
+                        personaje.setS(false);
+                        list.addElement(personaje);
+                        JList_MostrarPersonaje.setModel(list);
+                    }
+                }
+                if (nodo_seleccionado.toString().equals("Marvel")) {
+                    JTextField_NombreListar.setText("Marvel");
+                    list.removeAllElements();
+                    for (Personaje personaje : personajes) {
+                        personaje.setS(false);
+                        list.addElement(personaje);
+                        JList_MostrarPersonaje.setModel(list);
+                    }
+                }
+                if (nodo_seleccionado.toString().equals("Capcom")) {
+                    JTextField_NombreListar.setText("Capcom");
+                    list.removeAllElements();
+                    for (Personaje personaje : personajes) {
+                        personaje.setS(false);
+                        list.addElement(personaje);
+                        JList_MostrarPersonaje.setModel(list);
+                    }
+                }
+                if (nodo_seleccionado.toString().equals("MK")) {
+                    JTextField_NombreListar.setText("MK");
+                    list.removeAllElements();
+                    for (Personaje personaje : personajes) {
+                        personaje.setS(false);
+                        list.addElement(personaje);
+                        JList_MostrarPersonaje.setModel(list);
+                    }
+                }
             }
 
         }
@@ -736,16 +829,100 @@ public class lab extends javax.swing.JFrame {
 
     private void JButton_SeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_SeleccionarMouseClicked
         // TODO add your handling code here:
-        Personaje personaje1;
-        Personaje personaje2;
+
         if (JComboBox_Universo1.getSelectedItem().equals("DC")) {
-            System.out.println(dc.toString());
+            list2.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                list.addElement(personaje);
+                JList_PrimerSuperheroe.setModel(list);
+            }
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
+            personaje1 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
+        } else if (JComboBox_Universo1.getSelectedItem().equals("Marvel")) {
+            list2.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                list.addElement(personaje);
+                JList_PrimerSuperheroe.setModel(list);
+            }
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
+            personaje1 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
+        } else if (JComboBox_Universo1.getSelectedItem().equals("Capcom")) {
+            list2.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                list.addElement(personaje);
+                JList_PrimerSuperheroe.setModel(list);
+            }
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
+            personaje1 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
+        } else if (JComboBox_Universo1.getSelectedItem().equals("MK")) {
+            list2.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                list.addElement(personaje);
+                JList_PrimerSuperheroe.setModel(list);
+            }
             DefaultListModel modeloLISTA
                     = (DefaultListModel) JList_PrimerSuperheroe.getModel();
             personaje1 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
         }
-        
+
+        if (JComboBox_Universo2.getSelectedItem().equals("DC")) {
+            list3.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                list.addElement(personaje);
+                JList_PrimerSuperheroe.setModel(list);
+            }
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
+            personaje2 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
+        } else if (JComboBox_Universo2.getSelectedItem().equals("Marvel")) {
+            list3.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                list.addElement(personaje);
+                JList_PrimerSuperheroe.setModel(list);
+            }
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
+            personaje2 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
+        } else if (JComboBox_Universo2.getSelectedItem().equals("Capcom")) {
+            list3.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                list.addElement(personaje);
+                JList_PrimerSuperheroe.setModel(list);
+            }
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
+            personaje2 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
+        } else if (JComboBox_Universo2.getSelectedItem().equals("MK")) {
+            list3.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                list.addElement(personaje);
+                JList_PrimerSuperheroe.setModel(list);
+            }
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
+            personaje2 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
+        }
+
+        abrir_Dialog(JDialog_Pelea);
+
     }//GEN-LAST:event_JButton_SeleccionarMouseClicked
+
+    private void JButton_PeleaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_PeleaMouseClicked
+        // TODO add your handling code here:
+        turnos += 1;
+
+    }//GEN-LAST:event_JButton_PeleaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -786,8 +963,12 @@ public class lab extends javax.swing.JFrame {
     private javax.swing.JButton JButton_Agregar;
     private javax.swing.JButton JButton_Crear;
     private javax.swing.JButton JButton_Listar;
+    private javax.swing.JButton JButton_Mental;
+    private javax.swing.JButton JButton_Pelea;
     private javax.swing.JButton JButton_Seleccionar;
     private javax.swing.JButton JButton_Simular;
+    private javax.swing.JButton JButton_fisico;
+    private javax.swing.JButton JButton_resistencia;
     private javax.swing.JComboBox<String> JComboBox_ModificarUniverso;
     private javax.swing.JComboBox<String> JComboBox_Universo;
     private javax.swing.JComboBox<String> JComboBox_Universo1;
@@ -795,6 +976,7 @@ public class lab extends javax.swing.JFrame {
     private javax.swing.JDialog JDialog_Agregar;
     private javax.swing.JDialog JDialog_Listar;
     private javax.swing.JDialog JDialog_Modificar;
+    private javax.swing.JDialog JDialog_Pelea;
     private javax.swing.JDialog JDialog_Simular;
     private javax.swing.JList<String> JList_MostrarPersonaje;
     private javax.swing.JList<String> JList_PrimerSuperheroe;
@@ -805,6 +987,7 @@ public class lab extends javax.swing.JFrame {
     private javax.swing.JMenu JMenu_Listar;
     private javax.swing.JMenu JMenu_Simulacion;
     private javax.swing.JPopupMenu JPopUpMenu_Crud;
+    private javax.swing.JTextArea JTextArea_Bitacora;
     private javax.swing.JTextField JTextField_AFisica;
     private javax.swing.JTextField JTextField_CrearAMental;
     private javax.swing.JTextField JTextField_CrearDebilidad;
@@ -846,6 +1029,7 @@ public class lab extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     // End of variables declaration//GEN-END:variables
     private void abrir_Dialog(JDialog jd) {
         jd.setModal(true);
@@ -879,7 +1063,6 @@ public class lab extends javax.swing.JFrame {
         }
     }
 
- 
     ArrayList<Personaje> personajes = new ArrayList();
     ArrayList<Personaje> dc = new ArrayList();
     ArrayList<Personaje> Marvel = new ArrayList();
@@ -887,5 +1070,10 @@ public class lab extends javax.swing.JFrame {
     ArrayList<Personaje> MK = new ArrayList();
     DefaultMutableTreeNode nodo_seleccionado;
     Personaje personaje_seleccionada;
+    Personaje personaje1;
+    Personaje personaje2;
+    int turnos;
     DefaultListModel list = new DefaultListModel();
+    DefaultListModel list2 = new DefaultListModel();
+    DefaultListModel list3 = new DefaultListModel();
 }

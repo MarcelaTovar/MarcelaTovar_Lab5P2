@@ -194,9 +194,11 @@
         <Component class="javax.swing.JComboBox" name="JComboBox_Universo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
+              <StringArray count="4">
                 <StringItem index="0" value="DC"/>
                 <StringItem index="1" value="Marvel"/>
+                <StringItem index="2" value="Capcom"/>
+                <StringItem index="3" value="MK"/>
               </StringArray>
             </Property>
           </Properties>
@@ -657,6 +659,94 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JDialog" name="JDialog_Pelea">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="JButton_Pelea" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jScrollPane5" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="JButton_Mental" min="-2" pref="129" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="JButton_fisico" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <EmptySpace pref="79" max="32767" attributes="0"/>
+                                  <Component id="JButton_resistencia" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="JButton_Pelea" min="-2" pref="54" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jScrollPane5" min="-2" pref="287" max="-2" attributes="0"/>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="JButton_Mental" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="JButton_fisico" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="JButton_resistencia" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="JButton_resistencia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="RESISTENCIA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="JButton_Mental">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="MENTAL"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="JButton_fisico">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="FISICO"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="JTextArea_Bitacora">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="JButton_Pelea">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pelea"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JButton_PeleaMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
