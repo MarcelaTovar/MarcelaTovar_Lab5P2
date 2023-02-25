@@ -838,14 +838,14 @@ public class lab extends javax.swing.JFrame {
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
         m.reload();
-
-        JOptionPane.showMessageDialog(JDialog_Listar, "Eliminado con exito");
-        DefaultListModel modelo
-                = (DefaultListModel) JList_MostrarPersonaje.getModel();
-        modelo.remove(raiz.getIndex(nodo_seleccionado));
-        JList_MostrarPersonaje.setModel(modelo);
-        JOptionPane.showMessageDialog(this,
-                "Eliminado exitosamente");
+//
+//        JOptionPane.showMessageDialog(JDialog_Listar, "Eliminado con exito");
+//        DefaultListModel modelo
+//                = (DefaultListModel) JList_MostrarPersonaje.getModel();
+//        modelo.remove(raiz.getIndex(nodo_seleccionado));
+//        JList_MostrarPersonaje.setModel(modelo);
+//        JOptionPane.showMessageDialog(this,
+//                "Eliminado exitosamente");
     }//GEN-LAST:event_JMenuItem_EliminarActionPerformed
 
     private void JComboBox_Universo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboBox_Universo1ActionPerformed
