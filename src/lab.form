@@ -303,9 +303,6 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="JTextField_NombreListar">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTextField_NombreListarActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
