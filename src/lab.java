@@ -723,7 +723,9 @@ public class lab extends javax.swing.JFrame {
                 list.removeAllElements();
                 for (Personaje personaje : personajes) {
                     personaje.setS(false);
-                    list.addElement(personaje);
+                    if (personaje.getNombre().equals(personaje_seleccionada.getNombre())) {
+                        list.addElement(personaje);
+                    }
                     JList_MostrarPersonaje.setModel(list);
                 }
 
@@ -891,7 +893,9 @@ public class lab extends javax.swing.JFrame {
                 JList_PrimerSuperheroe.setModel(list2);
             }
         }
-        
+        personaje1 = ((Personaje) list2.get(
+                    JList_PrimerSuperheroe.getSelectedIndex()));
+                    
         
         
     }//GEN-LAST:event_JComboBox_Universo1ActionPerformed
@@ -962,6 +966,8 @@ public class lab extends javax.swing.JFrame {
                 JList_SegundoSuperHeroe.setModel(list3);
             }
         }
+        personaje2 = ((Personaje) list3.get(
+                    JList_SegundoSuperHeroe.getSelectedIndex()));
     }//GEN-LAST:event_JComboBox_Universo2ActionPerformed
 
     /**
