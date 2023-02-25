@@ -27,7 +27,6 @@ public class lab extends javax.swing.JFrame {
     public lab() {
         initComponents();
         JTextField_NombreListar.setEditable(false);
-        
 
     }
 
@@ -266,6 +265,11 @@ public class lab extends javax.swing.JFrame {
         );
 
         JComboBox_Universo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel", "Capcom", "MK" }));
+        JComboBox_Universo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JComboBox_Universo1MouseClicked(evt);
+            }
+        });
         JComboBox_Universo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JComboBox_Universo1ActionPerformed(evt);
@@ -273,6 +277,11 @@ public class lab extends javax.swing.JFrame {
         });
 
         JComboBox_Universo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel", "Capcom", "MK" }));
+        JComboBox_Universo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JComboBox_Universo2ActionPerformed(evt);
+            }
+        });
 
         jScrollPane3.setViewportView(JList_PrimerSuperheroe);
 
@@ -689,7 +698,7 @@ public class lab extends javax.swing.JFrame {
 
     private void JTree_ArbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTree_ArbolMouseClicked
         // TODO add your handling code here:
-        
+
         if (evt.getButton() == 3) {
             //seleccionar un nodo con click derecho
             DefaultTreeModel m = (DefaultTreeModel) JTree_Arbol.getModel();
@@ -724,7 +733,10 @@ public class lab extends javax.swing.JFrame {
                     list.removeAllElements();
                     for (Personaje personaje : personajes) {
                         personaje.setS(false);
-                        list.addElement(personaje);
+                        if (personaje.getUniverso().equals("DC")) {
+                            list.addElement(personaje);
+                        }
+
                         JList_MostrarPersonaje.setModel(list);
                     }
                 }
@@ -733,7 +745,9 @@ public class lab extends javax.swing.JFrame {
                     list.removeAllElements();
                     for (Personaje personaje : personajes) {
                         personaje.setS(false);
-                        list.addElement(personaje);
+                        if (personaje.getUniverso().equals("Marvel")) {
+                            list.addElement(personaje);
+                        }
                         JList_MostrarPersonaje.setModel(list);
                     }
                 }
@@ -742,7 +756,9 @@ public class lab extends javax.swing.JFrame {
                     list.removeAllElements();
                     for (Personaje personaje : personajes) {
                         personaje.setS(false);
-                        list.addElement(personaje);
+                        if (personaje.getUniverso().equals("Capcom")) {
+                            list.addElement(personaje);
+                        }
                         JList_MostrarPersonaje.setModel(list);
                     }
                 }
@@ -751,7 +767,9 @@ public class lab extends javax.swing.JFrame {
                     list.removeAllElements();
                     for (Personaje personaje : personajes) {
                         personaje.setS(false);
-                        list.addElement(personaje);
+                        if (personaje.getUniverso().equals("DC")) {
+                            list.addElement(personaje);
+                        }
                         JList_MostrarPersonaje.setModel(list);
                     }
                 }
@@ -810,114 +828,74 @@ public class lab extends javax.swing.JFrame {
                 = (DefaultTreeModel) JTree_Arbol.getModel();
         m.removeNodeFromParent(
                 nodo_seleccionado);
+        DefaultMutableTreeNode raiz
+                = (DefaultMutableTreeNode) m.getRoot();
         m.reload();
 
         JOptionPane.showMessageDialog(JDialog_Listar, "Eliminado con exito");
-        int i = 0;
-        for (Personaje personaje : personajes) {
-            if (nodo_seleccionado.getUserObject() instanceof Personaje) {
-                personaje_seleccionada
-                        = (Personaje) nodo_seleccionado.
-                                getUserObject();
-                if (personaje_seleccionada.equals(personaje)) {
-                    list.remove(i);
-                    JList_MostrarPersonaje.setModel(list);
-                }
-            }
-            i++;
-        }
+        DefaultListModel modelo
+                = (DefaultListModel) JList_MostrarPersonaje.getModel();
+        modelo.remove(raiz.getIndex(nodo_seleccionado));
+        JList_MostrarPersonaje.setModel(modelo);
+        JOptionPane.showMessageDialog(this,
+                "Eliminado exitosamente");
     }//GEN-LAST:event_JMenuItem_EliminarActionPerformed
 
     private void JComboBox_Universo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboBox_Universo1ActionPerformed
         // TODO add your handling code here:
+        DefaultTreeModel m = (DefaultTreeModel) JTree_Arbol.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+        
+        list2.removeAllElements();
+        if (JComboBox_Universo1.getSelectedItem().toString().equals("DC")) {
+            list2.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                if (personaje.getUniverso().equals("DC")) {
+                    list2.addElement(personaje);
+                }
+
+                JList_PrimerSuperheroe.setModel(list2);
+            }
+        }
+        if (JComboBox_Universo1.getSelectedItem().toString().equals("MK")) {
+            list2.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                if (personaje.getUniverso().equals("MK")) {
+                    list2.addElement(personaje);
+                }
+
+                JList_PrimerSuperheroe.setModel(list2);
+            }
+        }
+        if (JComboBox_Universo1.getSelectedItem().toString().equals("Capcom")) {
+            list2.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                if (personaje.getUniverso().equals("Capcon")) {
+                    list2.addElement(personaje);
+                }
+
+                JList_PrimerSuperheroe.setModel(list2);
+            }
+        }
+        if (JComboBox_Universo1.getSelectedItem().toString().equals("Marvel")) {
+            list2.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                if (personaje.getUniverso().equals("Marvel")) {
+                    list2.addElement(personaje);
+                }
+
+                JList_SegundoSuperHeroe.setModel(list2);
+            }
+        }
+        
     }//GEN-LAST:event_JComboBox_Universo1ActionPerformed
 
     private void JButton_SeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_SeleccionarMouseClicked
         // TODO add your handling code here:
-
-        if (JComboBox_Universo1.getSelectedItem().equals("DC")) {
-            list2.removeAllElements();
-            for (Personaje personaje : personajes) {
-                personaje.setS(false);
-                list.addElement(personaje);
-                JList_PrimerSuperheroe.setModel(list);
-            }
-            DefaultListModel modeloLISTA
-                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
-            personaje1 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
-        } else if (JComboBox_Universo1.getSelectedItem().equals("Marvel")) {
-            list2.removeAllElements();
-            for (Personaje personaje : personajes) {
-                personaje.setS(false);
-                list.addElement(personaje);
-                JList_PrimerSuperheroe.setModel(list);
-            }
-            DefaultListModel modeloLISTA
-                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
-            personaje1 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
-        } else if (JComboBox_Universo1.getSelectedItem().equals("Capcom")) {
-            list2.removeAllElements();
-            for (Personaje personaje : personajes) {
-                personaje.setS(false);
-                list.addElement(personaje);
-                JList_PrimerSuperheroe.setModel(list);
-            }
-            DefaultListModel modeloLISTA
-                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
-            personaje1 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
-        } else if (JComboBox_Universo1.getSelectedItem().equals("MK")) {
-            list2.removeAllElements();
-            for (Personaje personaje : personajes) {
-                personaje.setS(false);
-                list.addElement(personaje);
-                JList_PrimerSuperheroe.setModel(list);
-            }
-            DefaultListModel modeloLISTA
-                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
-            personaje1 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
-        }
-
-        if (JComboBox_Universo2.getSelectedItem().equals("DC")) {
-            list3.removeAllElements();
-            for (Personaje personaje : personajes) {
-                personaje.setS(false);
-                list.addElement(personaje);
-                JList_PrimerSuperheroe.setModel(list);
-            }
-            DefaultListModel modeloLISTA
-                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
-            personaje2 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
-        } else if (JComboBox_Universo2.getSelectedItem().equals("Marvel")) {
-            list3.removeAllElements();
-            for (Personaje personaje : personajes) {
-                personaje.setS(false);
-                list.addElement(personaje);
-                JList_PrimerSuperheroe.setModel(list);
-            }
-            DefaultListModel modeloLISTA
-                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
-            personaje2 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
-        } else if (JComboBox_Universo2.getSelectedItem().equals("Capcom")) {
-            list3.removeAllElements();
-            for (Personaje personaje : personajes) {
-                personaje.setS(false);
-                list.addElement(personaje);
-                JList_PrimerSuperheroe.setModel(list);
-            }
-            DefaultListModel modeloLISTA
-                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
-            personaje2 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
-        } else if (JComboBox_Universo2.getSelectedItem().equals("MK")) {
-            list3.removeAllElements();
-            for (Personaje personaje : personajes) {
-                personaje.setS(false);
-                list.addElement(personaje);
-                JList_PrimerSuperheroe.setModel(list);
-            }
-            DefaultListModel modeloLISTA
-                    = (DefaultListModel) JList_PrimerSuperheroe.getModel();
-            personaje2 = (Personaje) modeloLISTA.get(JList_PrimerSuperheroe.getSelectedIndex());
-        }
 
         abrir_Dialog(JDialog_Pelea);
 
@@ -928,6 +906,61 @@ public class lab extends javax.swing.JFrame {
         turnos += 1;
 
     }//GEN-LAST:event_JButton_PeleaMouseClicked
+
+    private void JComboBox_Universo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JComboBox_Universo1MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_JComboBox_Universo1MouseClicked
+
+    private void JComboBox_Universo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboBox_Universo2ActionPerformed
+        // TODO add your handling code here:
+        list3.removeAllElements();
+        
+        if (JComboBox_Universo2.getSelectedItem().toString().equals("DC")) {
+            list3.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                if (personaje.getUniverso().equals("DC")) {
+                    list3.addElement(personaje);
+                }
+
+                JList_SegundoSuperHeroe.setModel(list3);
+            }
+        }
+        if (JComboBox_Universo2.getSelectedItem().toString().equals("MK")) {
+            list3.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                if (personaje.getUniverso().equals("MK")) {
+                    list3.addElement(personaje);
+                }
+
+                JList_SegundoSuperHeroe.setModel(list3);
+            }
+        }
+        if (JComboBox_Universo2.getSelectedItem().toString().equals("Capcom")) {
+            list3.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                if (personaje.getUniverso().equals("Capcon")) {
+                    list3.addElement(personaje);
+                }
+
+                JList_SegundoSuperHeroe.setModel(list3);
+            }
+        }
+        if (JComboBox_Universo2.getSelectedItem().toString().equals("Marvel")) {
+            list3.removeAllElements();
+            for (Personaje personaje : personajes) {
+                personaje.setS(false);
+                if (personaje.getUniverso().equals("Marvel")) {
+                    list3.addElement(personaje);
+                }
+
+                JList_SegundoSuperHeroe.setModel(list3);
+            }
+        }
+    }//GEN-LAST:event_JComboBox_Universo2ActionPerformed
 
     /**
      * @param args the command line arguments
