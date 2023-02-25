@@ -516,6 +516,7 @@ public class lab extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(690, 646));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JButton_Agregar.setText("Agregar");
@@ -529,7 +530,7 @@ public class lab extends javax.swing.JFrame {
                 JButton_AgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(JButton_Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 272, 121));
+        getContentPane().add(JButton_Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 272, 121));
 
         JButton_Listar.setText("Listar");
         JButton_Listar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -537,7 +538,7 @@ public class lab extends javax.swing.JFrame {
                 JButton_ListarMouseClicked(evt);
             }
         });
-        getContentPane().add(JButton_Listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 272, 146));
+        getContentPane().add(JButton_Listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 272, 146));
 
         JButton_Simular.setText("Simular");
         JButton_Simular.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -545,7 +546,7 @@ public class lab extends javax.swing.JFrame {
                 JButton_SimularMouseClicked(evt);
             }
         });
-        getContentPane().add(JButton_Simular, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 286, 152));
+        getContentPane().add(JButton_Simular, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 286, 152));
 
         JMenu_Agregar.setText("Agregar");
         JMenu_Agregar.addActionListener(new java.awt.event.ActionListener() {
@@ -816,7 +817,18 @@ public class lab extends javax.swing.JFrame {
         m.reload();
 
         JOptionPane.showMessageDialog(JDialog_Listar, "Eliminado con exito");
-
+        int i = 0;
+        for (Personaje personaje : personajes) {
+            if (nodo_seleccionado.getUserObject() instanceof Personaje) {
+                personaje_seleccionada
+                        = (Personaje) nodo_seleccionado.
+                                getUserObject();
+                if (personaje_seleccionada.equals(personaje)) {
+                    list.remove(i);
+                }
+            }
+            i++;
+        }
     }//GEN-LAST:event_JMenuItem_EliminarActionPerformed
 
     private void JTextField_NombreListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextField_NombreListarActionPerformed
