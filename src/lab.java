@@ -839,7 +839,7 @@ public class lab extends javax.swing.JFrame {
                 = (DefaultMutableTreeNode) m.getRoot();
         m.reload();
 //
-//        JOptionPane.showMessageDialog(JDialog_Listar, "Eliminado con exito");
+      JOptionPane.showMessageDialog(JDialog_Listar, "Eliminado con exito");
 //        DefaultListModel modelo
 //                = (DefaultListModel) JList_MostrarPersonaje.getModel();
 //        modelo.remove(raiz.getIndex(nodo_seleccionado));
