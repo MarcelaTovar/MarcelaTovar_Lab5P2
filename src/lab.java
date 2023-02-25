@@ -101,7 +101,6 @@ public class lab extends javax.swing.JFrame {
         JButton_fisico = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         JTextArea_Bitacora = new javax.swing.JTextArea();
-        JButton_Pelea = new javax.swing.JButton();
         JButton_Agregar = new javax.swing.JButton();
         JButton_Listar = new javax.swing.JButton();
         JButton_Simular = new javax.swing.JButton();
@@ -293,6 +292,11 @@ public class lab extends javax.swing.JFrame {
                 JButton_SeleccionarMouseClicked(evt);
             }
         });
+        JButton_Seleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButton_SeleccionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JDialog_SimularLayout = new javax.swing.GroupLayout(JDialog_Simular.getContentPane());
         JDialog_Simular.getContentPane().setLayout(JDialog_SimularLayout);
@@ -468,50 +472,51 @@ public class lab extends javax.swing.JFrame {
         );
 
         JButton_resistencia.setText("RESISTENCIA");
+        JButton_resistencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButton_resistenciaMouseClicked(evt);
+            }
+        });
 
         JButton_Mental.setText("MENTAL");
+        JButton_Mental.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButton_MentalMouseClicked(evt);
+            }
+        });
 
         JButton_fisico.setText("FISICO");
+        JButton_fisico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButton_fisicoMouseClicked(evt);
+            }
+        });
 
         JTextArea_Bitacora.setColumns(20);
         JTextArea_Bitacora.setRows(5);
         jScrollPane5.setViewportView(JTextArea_Bitacora);
 
-        JButton_Pelea.setText("Pelea");
-        JButton_Pelea.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JButton_PeleaMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout JDialog_PeleaLayout = new javax.swing.GroupLayout(JDialog_Pelea.getContentPane());
         JDialog_Pelea.getContentPane().setLayout(JDialog_PeleaLayout);
         JDialog_PeleaLayout.setHorizontalGroup(
             JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JDialog_PeleaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDialog_PeleaLayout.createSequentialGroup()
                 .addGap(82, 82, 82)
-                .addGroup(JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane5)
                     .addGroup(JDialog_PeleaLayout.createSequentialGroup()
-                        .addComponent(JButton_Pelea, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(JDialog_PeleaLayout.createSequentialGroup()
-                        .addGroup(JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane5)
-                            .addGroup(JDialog_PeleaLayout.createSequentialGroup()
-                                .addComponent(JButton_Mental, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(84, 84, 84)
-                                .addComponent(JButton_fisico, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                                .addComponent(JButton_resistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(109, 109, 109))))
+                        .addComponent(JButton_Mental, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84)
+                        .addComponent(JButton_fisico, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addComponent(JButton_resistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(109, 109, 109))
         );
         JDialog_PeleaLayout.setVerticalGroup(
             JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDialog_PeleaLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(JButton_Pelea, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(JDialog_PeleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JButton_Mental, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -847,7 +852,7 @@ public class lab extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTreeModel m = (DefaultTreeModel) JTree_Arbol.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
-        
+
         list2.removeAllElements();
         if (JComboBox_Universo1.getSelectedItem().toString().equals("DC")) {
             list2.removeAllElements();
@@ -894,10 +899,9 @@ public class lab extends javax.swing.JFrame {
             }
         }
         personaje1 = ((Personaje) list2.get(
-                    JList_PrimerSuperheroe.getSelectedIndex()));
-                    
-        
-        
+                JList_PrimerSuperheroe.getSelectedIndex()));
+
+
     }//GEN-LAST:event_JComboBox_Universo1ActionPerformed
 
     private void JButton_SeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_SeleccionarMouseClicked
@@ -907,12 +911,6 @@ public class lab extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JButton_SeleccionarMouseClicked
 
-    private void JButton_PeleaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_PeleaMouseClicked
-        // TODO add your handling code here:
-        turnos += 1;
-
-    }//GEN-LAST:event_JButton_PeleaMouseClicked
-
     private void JComboBox_Universo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JComboBox_Universo1MouseClicked
         // TODO add your handling code here:
 
@@ -921,7 +919,7 @@ public class lab extends javax.swing.JFrame {
     private void JComboBox_Universo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboBox_Universo2ActionPerformed
         // TODO add your handling code here:
         list3.removeAllElements();
-        
+
         if (JComboBox_Universo2.getSelectedItem().toString().equals("DC")) {
             list3.removeAllElements();
             for (Personaje personaje : personajes) {
@@ -967,8 +965,51 @@ public class lab extends javax.swing.JFrame {
             }
         }
         personaje2 = ((Personaje) list3.get(
-                    JList_SegundoSuperHeroe.getSelectedIndex()));
+                JList_SegundoSuperHeroe.getSelectedIndex()));
     }//GEN-LAST:event_JComboBox_Universo2ActionPerformed
+
+    private void JButton_SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_SeleccionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JButton_SeleccionarActionPerformed
+
+    private void JButton_MentalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_MentalMouseClicked
+        // TODO add your handling code here:
+        if (t) {
+            personaje2.setPuntosdeVida(personaje1.getAgilidadMental() / 3);
+            JTextArea_Bitacora.setText(personaje2.toString());
+            t = false;
+        } else {
+            personaje1.setPuntosdeVida(personaje2.getAgilidadMental() / 3);
+            JTextArea_Bitacora.setText(personaje1.toString());
+            t = true;
+        }
+    }//GEN-LAST:event_JButton_MentalMouseClicked
+
+    private void JButton_fisicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_fisicoMouseClicked
+        // TODO add your handling code here:
+        if (t) {
+            personaje2.setPuntosdeVida(personaje1.getAgilidadMental() / 2);
+            JTextArea_Bitacora.setText(personaje2.toString());
+            t = false;
+        } else {
+            personaje1.setPuntosdeVida(personaje2.getAgilidadMental() / 2);
+            JTextArea_Bitacora.setText(personaje1.toString());
+            t = true;
+        }
+    }//GEN-LAST:event_JButton_fisicoMouseClicked
+
+    private void JButton_resistenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_resistenciaMouseClicked
+        // TODO add your handling code here:
+        if (t) {
+            personaje1.setPuntosdeVida((int) (personaje1.getPuntosdeVida() + 0.15));
+            JTextArea_Bitacora.setText(personaje2.toString());
+            t = false;
+        } else {
+            personaje2.setPuntosdeVida((int) (personaje2.getPuntosdeVida() + 0.15));
+            JTextArea_Bitacora.setText(personaje2.toString());
+            t = true;
+        }
+    }//GEN-LAST:event_JButton_resistenciaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1010,7 +1051,6 @@ public class lab extends javax.swing.JFrame {
     private javax.swing.JButton JButton_Crear;
     private javax.swing.JButton JButton_Listar;
     private javax.swing.JButton JButton_Mental;
-    private javax.swing.JButton JButton_Pelea;
     private javax.swing.JButton JButton_Seleccionar;
     private javax.swing.JButton JButton_Simular;
     private javax.swing.JButton JButton_fisico;
@@ -1110,9 +1150,7 @@ public class lab extends javax.swing.JFrame {
     }
 
     ArrayList<Personaje> personajes = new ArrayList();
-    ArrayList<Personaje> dc = new ArrayList();
-    ArrayList<Personaje> Marvel = new ArrayList();
-    ArrayList<Personaje> capcom = new ArrayList();
+    boolean t = true;
     ArrayList<Personaje> MK = new ArrayList();
     DefaultMutableTreeNode nodo_seleccionado;
     Personaje personaje_seleccionada;
