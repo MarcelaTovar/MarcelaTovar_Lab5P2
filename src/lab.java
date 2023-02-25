@@ -888,9 +888,11 @@ public class lab extends javax.swing.JFrame {
                     list2.addElement(personaje);
                 }
 
-                JList_SegundoSuperHeroe.setModel(list2);
+                JList_PrimerSuperheroe.setModel(list2);
             }
         }
+        
+        
         
     }//GEN-LAST:event_JComboBox_Universo1ActionPerformed
 
